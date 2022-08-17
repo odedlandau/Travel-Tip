@@ -5,5 +5,93 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(95, 50, 179);
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(248, 190, 81);
+}
+
+/* helpers */
+
+.flex {
+  display: flex;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+.center {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+.space-around {
+  justify-content: space-around;
+}
+.main-layout {
+  max-width: 1060px;
+  border: 1px solid black;
+}
+
+/* //COMP */
+
+/* header */
+header {
+  height: 20%;
+}
+
+header button {
+  background-color: darkgray;
+  height: 3em;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+header button:hover {
+  outline: 2px solid black;
+}
+header .top-header {
+  height: 50%;
+  margin-top: 20px;
+}
+header .bottom-header {
+  height: 50%;
+}
+/* main */
+main {
+  min-height: 70%;
+}
+
+aside {
+  flex-grow: 1;
+}
+aside .weather {
+  border: 1px solid black;
+  height: 45%;
+  width: 100%;
+  margin: 20px;
+  background-color: antiquewhite;
+}
+
+aside .location-table {
+  border: 1px solid black;
+  height: 45%;
+  width: 100%;
+  margin: 20px;
+  background-color: rgb(75, 75, 221);
+}
+
+section.map {
+  border: 1px solid black;
+  flex-grow: 2;
+  margin: 30px;
+  position: relative;
+  background-color: aqua;
+}
+
+/* MQ */
+
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
 }
