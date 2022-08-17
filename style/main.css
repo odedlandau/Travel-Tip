@@ -95,3 +95,7 @@ section.map {
     flex-direction: column;
   }
 }
+
+h1 {
+  background-color: rgb(7, 168, 255);
+}
