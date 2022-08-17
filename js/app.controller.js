@@ -14,7 +14,13 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'))
 
-        // renderlocationTable()
+    locService.getLocs()
+        .then(locs => {
+            renderlocationTable(locs)
+
+        })
+
+    // renderlocationTable()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -49,16 +55,28 @@ function onGetUserPos() {
             console.log('err!!!', err)
         })
 }
-function onPanTo() {
+
+function onPanTo(lat,lng) {
     console.log('Panning the Map')
-    mapService.panTo(35.6895, 139.6917)
+    mapService.panTo(lat,lng)
 }
 
-function renderlocationTable(){
-
+function renderlocationTable(locs) {
+    var strHTMLs = locs.map(loc => {
+        return `
+        <tr>
+            <td>${loc.id}</td>
+            <td>${loc.name}</td>
+            <td><button onclick="onPanTo(${loc.lat},${loc.lng})">Go there</button></td>
+            <td><button>X</button></td>`
+    })
+    const elLocationTable = document.querySelector('.location-list')
+    elLocationTable.innerHTML = strHTMLs.join('')
 }
+
+
 
 // function onGetUserPos(){
-// console.log('onGetUserPos');   
+// console.log('onGetUserPos');
 //     mapService.getUserPos()
 // }
